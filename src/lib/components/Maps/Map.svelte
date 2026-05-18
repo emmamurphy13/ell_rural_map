@@ -40,6 +40,8 @@ USAGE EXAMPLE:
     zoom = 10, // Initial zoom level (0–22)
     theme = 'liberty', // Basemap theme: 'liberty' | 'bright' | 'positron' | 'fiord' | 'dark'
     interactive = true, // Allow panning and zooming
+    maxBounds = null, // Optional [[west, south], [east, north]] bounding box
+    fitBounds = null, // Optional [[west, south], [east, north]] — fits view to these bounds on load
     border = false, // Show an accent border around the map
     width = null, // Optional explicit width in pixels
     height = null, // Optional explicit height in pixels
@@ -94,11 +96,15 @@ USAGE EXAMPLE:
           center: [longitude, latitude],
           zoom,
           interactive,
+          ...(maxBounds ? { maxBounds } : {}),
           attributionControl: credit ? false : { compact: true },
         });
 
         instance.on('style.load', () => {
           if (!mounted) return;
+          if (fitBounds) {
+            instance.fitBounds(fitBounds, { padding: 40, animate: false });
+          }
           mapReady = true;
         });
 

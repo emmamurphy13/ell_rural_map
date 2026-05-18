@@ -23,6 +23,8 @@ Use it for headers, footers, and navigation that appear on all pages.
   <SiteHeader />
 {/if}
 
+<div id="scroll-sentinel" style="height:1px;pointer-events:none;"></div>
+
 <main>
   <!-- This renders the current page's content -->
   {@render children()}

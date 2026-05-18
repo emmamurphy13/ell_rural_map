@@ -1,10 +1,24 @@
-// Page settings
-// These values are passed to the layout to control what appears on the page.
-export function load() {
+export async function load({ fetch }) {
+  let ellGraduation = { type: 'FeatureCollection', features: [] };
+  let nyState = { type: 'FeatureCollection', features: [] };
+
+  let suppressedSchools = [];
+
+  const [ellRes, nyRes, suppressedRes] = await Promise.all([
+    fetch('/data/ell-graduation.geojson'),
+    fetch('/data/ny-state.geojson'),
+    fetch('/data/suppressed-schools.json'),
+  ]);
+
+  if (ellRes.ok) ellGraduation = await ellRes.json();
+  if (nyRes.ok) nyState = await nyRes.json();
+  if (suppressedRes.ok) suppressedSchools = await suppressedRes.json();
+
   return {
-    // Set to false to hide the NYCity News Service header
     showHeader: true,
-    // Set to false to hide the site footer
     showFooter: true,
+    ellGraduation,
+    nyState,
+    suppressedSchools,
   };
 }

@@ -42,7 +42,11 @@ USAGE EXAMPLE:
     data = { type: 'FeatureCollection', features: [] }, // GeoJSON data
     paint = {}, // MapLibre paint properties
     layout = {}, // MapLibre layout properties
+    filter = null, // Optional MapLibre filter expression
     popup = null, // Optional function (feature) => htmlString
+    onMousemove = null, // Optional mousemove event handler
+    onMouseleave = null, // Optional mouseleave event handler
+    onClick = null, // Optional click handler (feature) => void
   } = $props();
 
   const validatedId = $derived.by(() => {
@@ -112,12 +116,29 @@ USAGE EXAMPLE:
       source: validatedId,
       paint,
       layout,
+      ...(filter ? { filter } : {}),
     });
 
     if (popup) {
       map.on('click', validatedId, handleClick);
       map.on('mouseenter', validatedId, handleMouseEnter);
       map.on('mouseleave', validatedId, handleMouseLeave);
+    }
+    if (onMousemove) {
+      map.on('mousemove', validatedId, onMousemove);
+      map.getCanvas().style.cursor = '';
+    }
+    if (onMouseleave) {
+      map.on('mouseleave', validatedId, onMouseleave);
+    }
+    if (onClick) {
+      map.on('click', validatedId, (e) => {
+        e.originalEvent.stopPropagation();
+        const feature = e.features && e.features[0];
+        if (feature) onClick(feature);
+      });
+      map.on('mouseenter', validatedId, () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', validatedId, () => { map.getCanvas().style.cursor = ''; });
     }
   }
 
@@ -131,6 +152,9 @@ USAGE EXAMPLE:
       map.off('mouseenter', validatedId, handleMouseEnter);
       map.off('mouseleave', validatedId, handleMouseLeave);
     }
+    if (onMousemove) map.off('mousemove', validatedId, onMousemove);
+    if (onMouseleave) map.off('mouseleave', validatedId, onMouseleave);
+    if (onClick) map.off('click', validatedId, onClick);
 
     if (map.getLayer(validatedId)) map.removeLayer(validatedId);
     if (map.getSource(validatedId)) map.removeSource(validatedId);
@@ -185,6 +209,13 @@ USAGE EXAMPLE:
     }
 
     previousPaintKeys = currentKeys;
+  });
+
+  // Reactively update filter when filter prop changes
+  $effect(() => {
+    const map = ctx.getMap();
+    if (!map || !map.getLayer(validatedId)) return;
+    map.setFilter(validatedId, filter ?? null);
   });
 
   onDestroy(() => {

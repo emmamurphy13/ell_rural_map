@@ -1,365 +1,269 @@
-<!--
-@component
-SiteFooter.svelte — Site Footer Component (NYCity News Service Style)
-
-A professional news-organization-style footer with multi-column layout,
-CUNY branding, navigation links, and copyright notice.
-
-USAGE EXAMPLE:
-<SiteFooter />
--->
 <script>
-  let {
-    navLinks = [
-      {
-        label: 'Arts & Culture',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/arts-culture/',
-      },
-      {
-        label: 'Business',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/business/',
-      },
-      {
-        label: 'Education',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/education/',
-      },
-      {
-        label: 'Environment',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/environment/',
-      },
-      {
-        label: 'Health',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/health/',
-      },
-      {
-        label: 'Housing',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/housing/',
-      },
-      {
-        label: 'Politics',
-        href: 'https://www.nycitynewsservice.com/nycns_topics/politics/',
-      },
-    ],
-    aboutLinks = [
-      {
-        label: 'About Us',
-        href: 'https://www.nycitynewsservice.com/about/',
-      },
-      {
-        label: 'Contact Us',
-        href: 'https://www.nycitynewsservice.com/contact/',
-      },
-    ],
-    logoHref = 'https://www.journalism.cuny.edu/',
-    logoAriaLabel = 'Visit the Craig Newmark Graduate School of Journalism website',
-    logoTitle = 'Craig Newmark Graduate School of Journalism at CUNY',
-    tagline = 'A student-powered service at the Craig Newmark Graduate School of Journalism',
-    orgName = 'NYCity News Service',
-  } = $props();
-
   const currentYear = new Date().getFullYear();
 </script>
 
 <footer class="site-footer">
-  <div class="footer-main">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <!-- Brand Column -->
-        <div class="footer-brand">
-          <a
-            href={logoHref}
-            class="footer-logo-link"
-            aria-label={logoAriaLabel}
-          >
-            <svg
-              viewBox="0 0 795 115"
-              class="cuny-logo"
-              role="img"
-              aria-label={logoTitle}
-            >
-              <g fill="currentColor">
-                <path
-                  d="M20.7,23.4v-3.7c0-4.1-1.9-5.8-4-5.8c-3.3,0-4.4,1.7-4.4,5.3v24.4c0,3.6,1.1,5.3,4.4,5.3c3,0,4-1.7,4-4.9v-5.8H29v5.5C29,50.5,25,56,16.7,56C8,56,4,50.5,4,43.7V19C4,12.2,8,6.7,16.7,6.7c8.3,0,12.3,6,12.3,13.2v3.5L20.7,23.4L20.7,23.4z"
-                />
-                <path
-                  d="M44.3,55.4H36V7.3h11.6c9.3,0,14,3.9,14,14.2c0,7.7-3,10.9-5.8,12.1l7,21.8h-8.4l-5.9-19.9c-1.1,0.1-2.8,0.2-4.3,0.2L44.3,55.4L44.3,55.4z M44.3,28.9h2.9c4.5,0,6.1-1.7,6.1-7.4c0-5.7-1.7-7.4-6.1-7.4h-2.9V28.9z"
-                />
-                <path
-                  d="M73.5,55.4h-8l8.9-48.1h10.3l8.9,48.1h-8l-1.5-10.7H75L73.5,55.4z M76.1,37.6h6.7l-3.3-20.7h-0.1L76.1,37.6z"
-                />
-                <path d="M99.5,55.4V7.3h8.3v48.1H99.5z" />
-                <path
-                  d="M126.7,31h13.5v24.4h-4l-1.5-3.6c-2.5,2.9-4.5,4.3-8.3,4.3c-6.5,0-11.1-4.7-11.1-12.3V19c0-6.8,4-12.3,12.1-12.3c8.3,0,12.4,6,12.4,13.2V23h-7.9c0-7.2-1.5-9.1-4.7-9.1c-2,0-3.7,1.2-3.7,5.3v24.7c0,3.1,1,5.1,3.9,5.1c3.3,0,4.5-1.9,4.5-6.7v-4.7h-5.3V31H126.7z"
-                />
-                <path
-                  d="M157,55.4V7.3h7.7l10.1,27.5h0.1V7.3h7.5v48.1h-7.2l-10.5-30.1h-0.1v30.1H157z"
-                />
-                <path
-                  d="M189.5,55.4V7.3h22.1v7.2h-13.9v12.4h10.7v7.2h-10.7v14.1h14.8v7.2L189.5,55.4L189.5,55.4z"
-                />
-                <path
-                  d="M233,7.3h6.8l5.6,30.7h0.1l4.6-30.7h7.7l-8.5,48.1h-6.9l-6-31.8h-0.1l-5.6,31.8h-6.9l-9.1-48.1h7.7l5.1,30.7h0.1L233,7.3z"
-                />
-                <path
-                  d="M297,7.3v48.1h-7.2V17.8h-0.1l-7.5,37.6h-4l-7.5-37.6h-0.1v37.6h-7.2V7.3h10.9l5.9,28.1h0.1l5.9-28.1H297z"
-                />
-                <path
-                  d="M310.3,55.4h-8l8.9-48.1h10.3l8.9,48.1h-8l-1.5-10.7h-9.1L310.3,55.4z M313,37.6h6.7l-3.3-20.7h-0.1L313,37.6z"
-                />
-                <path
-                  d="M344,55.4h-8.3V7.3h11.6c9.3,0,14,3.9,14,14.2c0,7.7-3,10.9-5.8,12.1l7,21.8h-8.4l-5.9-19.9c-1.1,0.1-2.8,0.2-4.3,0.2v19.7H344z M344,28.9h2.9c4.5,0,6.1-1.7,6.1-7.4c0-5.7-1.7-7.4-6.1-7.4H344V28.9z"
-                />
-                <path
-                  d="M368.7,55.4V7.3h8.3v17.8h0.1l8.7-17.8h8.3l-8.9,17.9l10.1,30.2h-8.4L380,33h-0.1l-2.9,5.3v17.1H368.7z"
-                />
-                <path
-                  d="M418.4,31H432v24.4h-4l-1.5-3.6c-2.5,2.9-4.5,4.3-8.3,4.3c-6.5,0-11.1-4.7-11.1-12.3V19c0-6.8,4-12.3,12.1-12.3c8.3,0,12.4,6,12.4,13.2V23h-7.9c0-7.2-1.5-9.1-4.7-9.1c-2,0-3.7,1.2-3.7,5.3v24.7c0,3.1,1,5.1,3.9,5.1c3.3,0,4.5-1.9,4.5-6.7v-4.7h-5.3V31z"
-                />
-                <path
-                  d="M447.4,55.4h-8.3V7.3h11.6c9.3,0,14,3.9,14,14.2c0,7.7-3,10.9-5.8,12.1l7,21.8h-8.4l-5.9-19.9c-1.1,0.1-2.8,0.2-4.3,0.2v19.7H447.4z M447.4,28.9h2.9c4.5,0,6.1-1.7,6.1-7.4c0-5.7-1.7-7.4-6.1-7.4h-2.9V28.9z"
-                />
-                <path
-                  d="M476.9,55.4h-8l8.9-48.1H488l8.9,48.1h-8l-1.5-10.7h-9.1L476.9,55.4z M479.5,37.6h6.7l-3.3-20.7h-0.1L479.5,37.6z"
-                />
-                <path
-                  d="M502.4,7.3h12.3c8.5,0,13.1,4.7,13.1,14.5v19.1c0,9.9-4.5,14.5-13.1,14.5h-12.3V7.3z M510.6,48.6h2.9c4.4,0,5.9-1.7,5.9-6.7V20.8c0-5.1-1.5-6.7-5.9-6.7h-2.9V48.6z"
-                />
-                <path
-                  d="M534.6,7.3h8.3v36.3c0,3.5,1.4,5.3,4.4,5.3s4.4-1.7,4.4-5.3V7.3h8.3v36c0,8.3-4.8,12.8-12.7,12.8s-12.7-4.5-12.7-12.8V7.3z"
-                />
-                <path
-                  d="M572.5,55.4h-8l8.9-48.1h10.3l8.9,48.1h-8l-1.5-10.7H574L572.5,55.4z M575.2,37.6h6.7l-3.3-20.7h-0.1L575.2,37.6z"
-                />
-                <path d="M600.5,14.5h-8V7.3h24.3v7.2h-8v40.9h-8.3V14.5z" />
-                <path
-                  d="M622.2,55.4V7.3h22.1v7.2h-13.9v12.4h10.7v7.2h-10.7v14.1h14.8v7.2L622.2,55.4L622.2,55.4z"
-                />
-                <path
-                  d="M256.3,74.4c-0.3-4.1-2.5-5.3-4.4-5.3c-2.7,0-4.1,1.7-4.1,4.7c0,8.2,16.8,12.1,16.8,25.2c0,7.9-5.3,12.3-13.1,12.3c-7.7,0-12.1-6.1-12.4-13.3l7.9-1.1c0.3,4.9,2.3,7.3,4.9,7.3c2.9,0,4.8-1.5,4.8-4.4c0-9.5-16.8-12.1-16.8-25.9c0-7.7,4.7-12,12.8-12c6.7,0,10.7,4.9,11.5,11.7L256.3,74.4z"
-                />
-                <path
-                  d="M287.4,78.6v-3.7c0-4.1-1.9-5.8-4-5.8c-3.3,0-4.4,1.7-4.4,5.3v24.4c0,3.6,1.1,5.3,4.4,5.3c3,0,4-1.7,4-4.9v-5.8h8.3v5.5c0,6.8-4,12.3-12.3,12.3c-8.7,0-12.7-5.5-12.7-12.3V74.1c0-6.8,4-12.3,12.7-12.3c8.3,0,12.3,6,12.3,13.2v3.5L287.4,78.6L287.4,78.6z"
-                />
-                <path
-                  d="M302.8,110.6V62.5h8.3v19.6h8.8V62.5h8.3v48.1h-8.3V89.3H311v21.3H302.8z"
-                />
-                <path
-                  d="M335.1,74.2c0-6.8,4-12.3,12.7-12.3s12.7,5.5,12.7,12.3V99c0,6.8-4,12.3-12.7,12.3s-12.7-5.5-12.7-12.3V74.2z M343.4,98.8c0,3.6,1.1,5.3,4.4,5.3c3.3,0,4.4-1.7,4.4-5.3V74.4c0-3.6-1.1-5.3-4.4-5.3c-3.3,0-4.4,1.7-4.4,5.3V98.8z"
-                />
-                <path
-                  d="M367.4,74.2c0-6.8,4-12.3,12.7-12.3s12.7,5.5,12.7,12.3V99c0,6.8-4,12.3-12.7,12.3s-12.7-5.5-12.7-12.3V74.2z M375.6,98.8c0,3.6,1.1,5.3,4.4,5.3c3.3,0,4.4-1.7,4.4-5.3V74.4c0-3.6-1.1-5.3-4.4-5.3c-3.3,0-4.4,1.7-4.4,5.3V98.8z"
-                />
-                <path d="M399.6,110.6V62.5h8.3v40.9h13v7.2H399.6z" />
-                <path
-                  d="M434.3,74.2c0-6.8,4-12.3,12.7-12.3s12.7,5.5,12.7,12.3V99c0,6.8-4,12.3-12.7,12.3s-12.7-5.5-12.7-12.3V74.2z M442.6,98.8c0,3.6,1.1,5.3,4.4,5.3c3.3,0,4.4-1.7,4.4-5.3V74.4c0-3.6-1.1-5.3-4.4-5.3c-3.3,0-4.4,1.7-4.4,5.3V98.8z"
-                />
-                <path
-                  d="M466.7,110.6V62.5h23.1v7.2H475v12.4h11v7.2h-11.1v21.3H466.7z"
-                />
-                <path
-                  d="M500.9,104.1h1.7c3.2,0,4.3-1.3,4.3-4V62.5h8.3V101c0,6.1-2.5,10.3-11.6,10.3h-2.7V104.1z"
-                />
-                <path
-                  d="M522.1,74.2c0-6.8,4-12.3,12.7-12.3s12.7,5.5,12.7,12.3V99c0,6.8-4,12.3-12.7,12.3s-12.7-5.5-12.7-12.3V74.2z M530.4,98.8c0,3.6,1.1,5.3,4.4,5.3c3.3,0,4.4-1.7,4.4-5.3V74.4c0-3.6-1.1-5.3-4.4-5.3c-3.3,0-4.4,1.7-4.4,5.3V98.8z"
-                />
-                <path
-                  d="M554.5,62.5h8.3v36.3c0,3.5,1.4,5.3,4.4,5.3s4.4-1.7,4.4-5.3V62.5h8.3v36c0,8.3-4.8,12.8-12.7,12.8s-12.7-4.5-12.7-12.8V62.5z"
-                />
-                <path
-                  d="M595.2,110.6h-8.3V62.5h11.6c9.3,0,14,3.9,14,14.2c0,7.7-3,10.9-5.8,12.1l7,21.8h-8.4l-5.9-19.9c-1.1,0.1-2.8,0.2-4.3,0.2v19.7H595.2z M595.2,84.1h2.9c4.5,0,6.1-1.7,6.1-7.4c0-5.7-1.7-7.4-6.1-7.4h-2.9V84.1z"
-                />
-                <path
-                  d="M620,110.6V62.5h7.7L637.8,90h0.1V62.5h7.5v48.1h-7.2l-10.5-30.1h-0.1v30.1H620z"
-                />
-                <path
-                  d="M658.8,110.6h-8l8.9-48.1H670l8.9,48.1h-8l-1.5-10.7h-9.1L658.8,110.6z M661.5,92.8h6.7l-3.3-20.7h-0.1L661.5,92.8z"
-                />
-                <path d="M684.1,110.6V62.5h8.3v40.9h13v7.2H684.1z" />
-                <path d="M710.2,110.6V62.5h8.3v48.1H710.2z" />
-                <path
-                  d="M742,74.4c-0.3-4.1-2.5-5.3-4.4-5.3c-2.7,0-4.1,1.7-4.1,4.7c0,8.2,16.8,12.1,16.8,25.2c0,7.9-5.3,12.3-13.1,12.3c-7.7,0-12.1-6.1-12.4-13.3l7.9-1.1c0.3,4.9,2.3,7.3,4.9,7.3c2.9,0,4.8-1.5,4.8-4.4c0-9.5-16.8-12.1-16.8-25.9c0-7.7,4.7-12,12.8-12c6.7,0,10.7,4.9,11.5,11.7L742,74.4z"
-                />
-                <path
-                  d="M789.8,62.5v48.1h-7.2V73h-0.1l-7.5,37.6h-4L763.5,73h-0.1v37.6h-7.2V62.5h10.9l5.9,28.1h0.1l5.9-28.1H789.8z"
-                />
-              </g>
-            </svg>
-          </a>
-          <p class="footer-tagline">
-            {tagline}
-          </p>
-        </div>
 
-        <!-- Navigation Column -->
-        <div class="footer-col">
-          <h3 class="footer-heading">ABOUT</h3>
-          <nav aria-label="Footer navigation">
-            <ul class="footer-list">
-              {#each aboutLinks as link (link.href)}
-                <li>
-                  <a href={link.href} class="footer-link"
-                    >{link.label.toUpperCase()}</a
-                  >
-                </li>
-              {/each}
-            </ul>
-          </nav>
-        </div>
-
-        <!-- Topics Column -->
-        {#if navLinks.length > 0}
-          <div class="footer-col">
-            <h3 class="footer-heading">TOPICS</h3>
-            <nav aria-label="Footer topics">
-              <ul class="footer-list">
-                {#each navLinks as link (link.href)}
-                  <li>
-                    <a href={link.href} class="footer-link"
-                      >{link.label.toUpperCase()}</a
-                    >
-                  </li>
-                {/each}
-              </ul>
-            </nav>
-          </div>
-        {/if}
-      </div>
+  <!-- Support CTA bar -->
+  <div class="support-bar">
+    <div class="support-inner">
+      <p class="support-text">Support journalism that helps families navigate education.</p>
+      <a
+        href="https://chalkbeat.fundjournalism.org/donate/?campaign=701Pc000003r3R4IAI"
+        class="support-btn"
+      >Donate today</a>
     </div>
   </div>
 
-  <!-- Bottom bar with copyright -->
-  <div class="footer-bottom">
-    <div class="footer-container">
-      <p class="footer-copyright">
-        &copy; {currentYear}
-        {orgName}
-      </p>
+  <div class="footer-inner">
+
+    <!-- 4-column link grid -->
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Who We Are</h3>
+        <ul class="footer-list">
+          <li><a href="https://www.chalkbeat.org/pages/about/" class="footer-link">About Us</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/ethics/" class="footer-link">Code of Ethics</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/our-staff/" class="footer-link">Our Staff</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/careers/" class="footer-link">Careers at Chalkbeat</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/awards/" class="footer-link">Awards</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/supporters/" class="footer-link">Our Supporters</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Policies</h3>
+        <ul class="footer-list">
+          <li><a href="https://www.chalkbeat.org/pages/republishing/" class="footer-link">Republishing</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/privacy-policy/" class="footer-link">Privacy Policy</a></li>
+          <li><a href="https://www.civicnews.org/tos" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Contact</h3>
+        <ul class="footer-list">
+          <li><a href="https://www.chalkbeat.org/contact/" class="footer-link">Contact Us</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/become-a-chalkbeat-sponsor/" class="footer-link">Become a Sponsor</a></li>
+          <li><a href="https://www.chalkbeat.org/pages/how-to-be-a-source/" class="footer-link">How to Be a Source</a></li>
+          <li><a href="https://www.chalkbeat.org/newsletters/" class="footer-link">Newsletters</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Newsrooms</h3>
+        <ul class="footer-list">
+          <li><a href="https://www.chalkbeat.org/" class="footer-link">Chalkbeat</a></li>
+          <li><a href="https://www.votebeat.org/" class="footer-link">Votebeat</a></li>
+          <li><a href="https://www.healthbeat.org/" class="footer-link">Healthbeat</a></li>
+        </ul>
+      </div>
+
     </div>
+
+    <!-- Social icons -->
+    <div class="footer-social">
+      <span class="social-label">Follow us</span>
+      <a href="https://www.instagram.com/chalkbeatorg/" class="social-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/Chalkbeat/" class="social-link" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/chalkbeat" class="social-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://twitter.com/chalkbeat" class="social-link" aria-label="X / Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://bsky.app/profile/chalkbeat.org" class="social-link" aria-label="Bluesky">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.3-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+      </a>
+    </div>
+
+    <!-- Logo + copyright -->
+    <div class="footer-bottom">
+      <a href="https://www.chalkbeat.org/" class="footer-logo-link" aria-label="Chalkbeat">
+        <img src="/chalkfoot.png" alt="Chalkbeat" class="footer-logo" />
+      </a>
+      <p class="footer-copyright">Chalkbeat is a Civic News Company Newsroom &copy;{currentYear}</p>
+    </div>
+
   </div>
 </footer>
 
-<style lang="scss">
-  @use '../../styles' as *;
-
+<style>
   .site-footer {
-    margin-top: var(--spacing-xxl);
+    background: #f5f0e4;
+    color: #111111;
+    margin-top: 60px;
+    font-family: Georgia, 'Times New Roman', serif;
   }
 
-  .footer-main {
-    background-color: var(--color-cuny-blue-dark);
-    padding: var(--spacing-xl) var(--spacing-md);
+  /* ── Support CTA bar ── */
+  .support-bar {
+    background: #e8e0ce;
+    border-top: 2px solid #c8bfa8;
+    border-bottom: 2px solid #c8bfa8;
   }
 
-  .footer-container {
-    max-width: var(--max-width-wide);
+  .support-inner {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .support-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #111;
+    margin: 0;
+  }
+
+  .support-btn {
+    background: #0d2b1a;
+    color: #f5f0e4;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 11px 28px;
+    flex-shrink: 0;
+    transition: opacity 0.15s;
+  }
+
+  .support-btn:hover {
+    opacity: 0.85;
+  }
+
+  /* ── Main footer body ── */
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px 32px;
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
+    margin-bottom: 40px;
   }
 
-  /* Brand column */
-  .footer-brand {
-    text-align: left;
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
-  .footer-logo-link {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--color-white);
-  }
-
-  .cuny-logo {
-    width: 100%;
-    max-width: var(--max-width-footer-logo);
-    height: auto;
-    margin: 0 auto;
-    display: block;
-    transition: var(--transition-opacity);
-  }
-
-  .footer-logo-link:hover .cuny-logo {
-    opacity: var(--opacity-hover);
-  }
-
-  .footer-tagline {
-    color: var(--color-border);
-    font-family: var(--font-serif);
-    font-size: var(--font-size-sm);
-    line-height: var(--leading-normal);
-    margin-top: var(--spacing-sm);
-    margin-bottom: 0;
-  }
-
-  /* Column headings */
   .footer-heading {
-    color: var(--color-white);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-wider);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-xs);
-    border-bottom: var(--border-width-thin) solid var(--color-medium-gray);
+    letter-spacing: 0.12em;
+    color: #111;
+    margin: 0 0 14px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c8bfa8;
   }
 
-  /* Link lists */
   .footer-list {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-
-  .footer-list li {
-    margin-bottom: var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .footer-link {
-    color: var(--color-border);
+    color: #333;
     text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-normal);
-    letter-spacing: var(--letter-spacing-wider);
-    transition: var(--transition-color);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: color 0.15s;
   }
 
   .footer-link:hover {
-    color: var(--color-white);
+    color: #000;
+    text-decoration: underline;
   }
 
-  /* Bottom copyright bar */
+  /* ── Social row ── */
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 28px 0;
+    border-top: 1px solid #c8bfa8;
+    border-bottom: 1px solid #c8bfa8;
+    margin-bottom: 28px;
+  }
+
+  .social-label {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #555;
+    margin-right: 4px;
+  }
+
+  .social-link {
+    color: #333;
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+  }
+
+  .social-link:hover {
+    color: #000;
+  }
+
+  /* ── Bottom logo + copyright ── */
   .footer-bottom {
-    background-color: var(--color-cuny-blue-dark);
-    padding: var(--spacing-sm) var(--spacing-md);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .footer-logo {
+    height: 30px;
+    width: auto;
+    opacity: 0.6;
+    transition: opacity 0.15s;
+    filter: invert(1) brightness(0);
+  }
+
+  .footer-logo-link:hover .footer-logo {
+    opacity: 1;
   }
 
   .footer-copyright {
-    color: var(--color-border);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-sm);
-    letter-spacing: var(--letter-spacing-wide);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: #666;
     margin: 0;
-  }
-
-  /* Tablet and up: multi-column layout */
-  @include tablet {
-    .footer-grid {
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: var(--spacing-xl);
-    }
-
-    .footer-brand {
-      text-align: left;
-    }
-
-    .cuny-logo {
-      margin: 0;
-    }
   }
 </style>

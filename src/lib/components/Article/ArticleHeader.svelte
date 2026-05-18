@@ -34,64 +34,11 @@ USAGE EXAMPLE:
   <Headline text={headline} />
 
   {#if byline || pubDate}
-    <div class="meta">
-      {#if byline}
-        <div class="meta-item meta-byline">
-          <svg
-            class="meta-icon"
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <path
-              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-            <circle
-              cx="12"
-              cy="7"
-              r="4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-          </svg>
-          <Byline {byline} />
-        </div>
-      {/if}
-
-      {#if pubDate}
-        <div class="meta-item meta-date">
-          <svg
-            class="meta-icon"
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-            <path
-              d="M12 6v6l4 2"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-          <Pubdate date={pubDate} />
-        </div>
-      {/if}
-    </div>
+    <p class="meta-line">
+      {#if byline}<span class="meta-by">By</span> <span class="meta-author">{byline}</span>{/if}
+      {#if byline && pubDate}<span class="meta-sep"> | </span>{/if}
+      {#if pubDate}<span class="meta-date">{pubDate}</span>{/if}
+    </p>
   {/if}
 </header>
 
@@ -102,53 +49,31 @@ USAGE EXAMPLE:
     margin-bottom: var(--spacing-md);
   }
 
-  .meta {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-xs);
-    padding: var(--font-size-xs) var(--spacing-sm);
-    border-left: var(--border-width-accent) solid var(--color-accent);
-    background-color: var(--color-light-gray);
+  .meta-line {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    margin: 6px 0 0 0;
+    color: #555;
+    line-height: 1.4;
   }
 
-  .meta-item {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
+  .meta-by {
+    color: #555;
+    font-weight: 400;
   }
 
-  .meta-icon {
-    color: var(--color-accent);
-    flex-shrink: 0;
+  .meta-author {
+    color: #111;
+    font-weight: 700;
   }
 
-  /* Override Byline styles inside the meta box */
-  .meta-byline :global(.byline) {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-dark);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-wide);
-    margin: 0;
+  .meta-sep {
+    color: #bbb;
+    margin: 0 2px;
   }
 
-  /* Override Pubdate styles inside the meta box */
-  .meta-date :global(.pubdate) {
-    font-size: var(--font-size-sm);
-    color: var(--color-medium-gray);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-wide);
-    margin: 0;
-  }
-
-  /* Tablet and up: inline meta */
-  @include tablet {
-    .meta {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--spacing-sm);
-    }
+  .meta-date {
+    color: #555;
+    font-weight: 400;
   }
 </style>
