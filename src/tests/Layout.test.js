@@ -6,45 +6,33 @@ import SiteFooter from '$lib/components/Layout/SiteFooter.svelte';
 describe('SiteHeader', () => {
   it('renders the logo', () => {
     render(SiteHeader);
-    expect(screen.getByLabelText('NYCity News Service')).toBeTruthy();
+    expect(screen.getByLabelText('Chalkbeat')).toBeTruthy();
   });
 
   it('renders default navigation links', () => {
     render(SiteHeader);
-    expect(screen.getByText('Arts & Culture')).toBeTruthy();
-    expect(screen.getByText('Politics')).toBeTruthy();
+    expect(screen.getByText('Home')).toBeTruthy();
   });
 
-  it('renders custom navigation links', () => {
-    render(SiteHeader, {
-      props: {
-        navLinks: [{ label: 'Sports', href: '/sports' }],
-      },
-    });
-    expect(screen.getByText('Sports')).toBeTruthy();
+  it('renders the Newsletters link', () => {
+    render(SiteHeader);
+    expect(screen.getByText('Newsletters')).toBeTruthy();
   });
 
-  it('hides nav when navLinks is empty', () => {
-    const { container } = render(SiteHeader, {
-      props: { navLinks: [] },
-    });
-    expect(container.querySelector('nav')).toBeNull();
+  it('renders the Donate link', () => {
+    render(SiteHeader);
+    expect(screen.getByText('Donate')).toBeTruthy();
   });
 });
 
 describe('SiteFooter', () => {
-  it('renders the CUNY logo', () => {
+  it('renders the Chalkbeat logo', () => {
     render(SiteFooter);
-    expect(
-      screen.getByLabelText(
-        'Craig Newmark Graduate School of Journalism at CUNY'
-      )
-    ).toBeTruthy();
+    expect(screen.getByAltText('Chalkbeat')).toBeTruthy();
   });
 
   it('renders footer navigation links', () => {
     render(SiteFooter);
-    expect(screen.getByText('ABOUT US')).toBeTruthy();
-    expect(screen.getByText('CONTACT US')).toBeTruthy();
+    expect(screen.getByText('About Us')).toBeTruthy();
   });
 });
