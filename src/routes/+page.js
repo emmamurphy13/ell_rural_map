@@ -1,3 +1,5 @@
+import { base } from '$app/paths';
+
 export async function load({ fetch }) {
   let ellGraduation = { type: 'FeatureCollection', features: [] };
   let nyState = { type: 'FeatureCollection', features: [] };
@@ -5,9 +7,9 @@ export async function load({ fetch }) {
   let suppressedSchools = [];
 
   const [ellRes, nyRes, suppressedRes] = await Promise.all([
-    fetch('/data/ell-graduation.geojson'),
-    fetch('/data/ny-state.geojson'),
-    fetch('/data/suppressed-schools.json'),
+    fetch(`${base}/data/ell-graduation.geojson`),
+    fetch(`${base}/data/ny-state.geojson`),
+    fetch(`${base}/data/suppressed-schools.json`),
   ]);
 
   if (ellRes.ok) ellGraduation = await ellRes.json();
