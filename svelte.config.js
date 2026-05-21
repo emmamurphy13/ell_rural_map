@@ -34,6 +34,9 @@ const config = {
       base: process.env.BASE_PATH || '',
       relative: false,
     },
+    prerender: {
+      handleHttpError: 'warn',
+    },
   },
 };
 
