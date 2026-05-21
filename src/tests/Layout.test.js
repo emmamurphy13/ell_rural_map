@@ -14,14 +14,14 @@ describe('SiteHeader', () => {
     expect(screen.getByText('Home')).toBeTruthy();
   });
 
-  it('renders the Newsletters link', () => {
+  it('renders the Map link', () => {
     render(SiteHeader);
-    expect(screen.getByText('Newsletters')).toBeTruthy();
+    expect(screen.getByText('Map')).toBeTruthy();
   });
 
-  it('renders the Donate link', () => {
+  it('renders the Data link', () => {
     render(SiteHeader);
-    expect(screen.getByText('Donate')).toBeTruthy();
+    expect(screen.getByText('Data')).toBeTruthy();
   });
 });
 

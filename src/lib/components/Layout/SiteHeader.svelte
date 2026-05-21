@@ -119,16 +119,7 @@
     display: block;
   }
 
-  .site-title {
-    font-family: sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: #0d2b1a;
-    letter-spacing: 0.02em;
-  }
-
-  .newsletters-btn,
-  .donate-btn {
+  .newsletters-btn {
     text-decoration: none;
     font-family: sans-serif;
     font-size: 13px;
@@ -147,13 +138,6 @@
   }
 
   .newsletters-btn:hover { opacity: 0.85; }
-
-  .donate-btn {
-    background: #0d2b1a;
-    color: #ffffff;
-  }
-
-  .donate-btn:hover { opacity: 0.85; }
 
   /* ── Nav bar ── */
   .nav-bar {
@@ -209,20 +193,6 @@
     align-items: center;
   }
 
-  .brand-site {
-    background: #2e8070;
-    color: #ffffff;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-  }
-
   .brand-chalkbeat:hover { opacity: 0.9; }
   .brand-newyork:hover { opacity: 0.9; }
 
@@ -270,62 +240,4 @@
     opacity: 0.7;
   }
 
-  /* ── Dropdown nav items ── */
-  .nav-item {
-    position: relative;
-    display: flex;
-    align-items: stretch;
-  }
-
-  .nav-item .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .chevron {
-    opacity: 0.7;
-    transition: transform 0.15s;
-    flex-shrink: 0;
-  }
-
-  .nav-item:hover .chevron {
-    transform: rotate(180deg);
-  }
-
-  .dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    background: #ffffff;
-    border-top: 3px solid #0d2b1a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    list-style: none;
-    margin: 0;
-    padding: 6px 0;
-    z-index: 200;
-  }
-
-  .nav-item:hover .dropdown {
-    display: block;
-  }
-
-  .dropdown-link {
-    display: block;
-    padding: 9px 18px;
-    color: #1a1a1a;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: background 0.1s, color 0.1s;
-  }
-
-  .dropdown-link:hover {
-    background: #e8f0ed;
-    color: #0d2b1a;
-  }
 </style>
