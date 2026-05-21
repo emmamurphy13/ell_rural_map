@@ -27,11 +27,7 @@
       </a>
 
       <div class="top-bar-side top-bar-right">
-        <a href="https://www.chalkbeat.org/newsletters/" class="newsletters-btn">Newsletters</a>
-        <a
-          href="https://chalkbeat.fundjournalism.org/donate/?campaign=701Pc000003r3R4IAI"
-          class="donate-btn"
-        >Donate</a>
+        <a href="{base}/about" class="newsletters-btn">About</a>
       </div>
     </div>
   </div>
@@ -46,55 +42,13 @@
         <a href="https://www.chalkbeat.org/newyork/" class="brand-newyork">New York</a>
       </div>
 
-      <a href="https://www.chalkbeat.org/" class="nav-link">Home</a>
+      <a href="{base}/" class="nav-link">Home</a>
 
-      <div class="nav-item has-dropdown">
-        <a href="https://www.chalkbeat.org/" class="nav-link">
-          Communities
-          <svg class="chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
-        </a>
-        <ul class="dropdown" role="menu">
-          <li><a href="https://www.chalkbeat.org/newyork/" class="dropdown-link">New York</a></li>
-          <li><a href="https://www.chalkbeat.org/chicago/" class="dropdown-link">Chicago</a></li>
-          <li><a href="https://www.chalkbeat.org/colorado/" class="dropdown-link">Colorado</a></li>
-          <li><a href="https://www.chalkbeat.org/detroit/" class="dropdown-link">Detroit</a></li>
-          <li><a href="https://www.chalkbeat.org/indiana/" class="dropdown-link">Indiana</a></li>
-          <li><a href="https://www.chalkbeat.org/newark/" class="dropdown-link">Newark</a></li>
-          <li><a href="https://www.chalkbeat.org/philadelphia/" class="dropdown-link">Philadelphia</a></li>
-          <li><a href="https://www.chalkbeat.org/tennessee/" class="dropdown-link">Tennessee</a></li>
-        </ul>
-      </div>
+      <a href="{base}/map" class="nav-link">Map</a>
 
-      <div class="nav-item has-dropdown">
-        <a href="https://www.chalkbeat.org/national/" class="nav-link">
-          National News
-          <svg class="chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
-        </a>
-        <ul class="dropdown" role="menu">
-          <li><a href="https://www.chalkbeat.org/national/education-policy/" class="dropdown-link">Education Policy</a></li>
-          <li><a href="https://www.chalkbeat.org/national/school-funding/" class="dropdown-link">School Funding</a></li>
-          <li><a href="https://www.chalkbeat.org/national/teachers/" class="dropdown-link">Teachers</a></li>
-          <li><a href="https://www.chalkbeat.org/national/students/" class="dropdown-link">Students</a></li>
-        </ul>
-      </div>
+      <a href="{base}/data" class="nav-link">Data</a>
 
-      <a href="https://jobs.chalkbeat.org/" class="nav-link">Jobs Board</a>
-
-      <a href="https://events.chalkbeat.org/" class="nav-link">Events</a>
-
-      <div class="nav-item has-dropdown">
-        <a href="https://www.chalkbeat.org/pages/about/" class="nav-link">
-          About Us
-          <svg class="chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
-        </a>
-        <ul class="dropdown" role="menu">
-          <li><a href="https://www.chalkbeat.org/pages/about/" class="dropdown-link">About Chalkbeat</a></li>
-          <li><a href="https://www.chalkbeat.org/pages/our-staff/" class="dropdown-link">Our Staff</a></li>
-          <li><a href="https://www.chalkbeat.org/pages/ethics/" class="dropdown-link">Code of Ethics</a></li>
-          <li><a href="https://www.chalkbeat.org/pages/careers/" class="dropdown-link">Careers</a></li>
-          <li><a href="https://www.chalkbeat.org/pages/supporters/" class="dropdown-link">Our Supporters</a></li>
-        </ul>
-      </div>
+      <a href="{base}/about" class="nav-link">About</a>
 
       <!-- Search icon (always visible in nav, more prominent when scrolled) -->
       <button class="search-btn" aria-label="Search">
@@ -163,6 +117,14 @@
     height: 100px;
     width: auto;
     display: block;
+  }
+
+  .site-title {
+    font-family: sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0d2b1a;
+    letter-spacing: 0.02em;
   }
 
   .newsletters-btn,
@@ -243,6 +205,20 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 0 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .brand-site {
+    background: #2e8070;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 12px;
     display: flex;
     align-items: center;
   }

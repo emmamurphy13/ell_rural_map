@@ -1,8 +1,24 @@
 <script>
+  import { onMount } from 'svelte';
   import ArticleHeader from '$lib/components/Article/ArticleHeader.svelte';
   import Map from '$lib/components/Maps/Map.svelte';
   import MapLayer from '$lib/components/Maps/MapLayer.svelte';
   import Legend from '$lib/components/Maps/Legend.svelte';
+
+  onMount(() => {
+    window.addEventListener('message', function(e) {
+      if (e.data['datawrapper-height'] !== undefined) {
+        const iframes = document.querySelectorAll('iframe');
+        for (const id in e.data['datawrapper-height']) {
+          for (const iframe of iframes) {
+            if (iframe.contentWindow === e.source) {
+              iframe.style.height = e.data['datawrapper-height'][id] + 'px';
+            }
+          }
+        }
+      }
+    });
+  });
 
   let { data } = $props();
   const ellGraduation = data.ellGraduation;
@@ -154,19 +170,6 @@
     </a>
     <a href="https://www.chalkbeat.org/pages/republishing/" class="share-republish">Republish</a>
   </div>
-
-  <p>
-    English Language Learners (ELL) face unique challenges in graduating from public schools
-    across the country. For students in rural areas and towns in Upstate New York the issues
-    can be exacerbated.
-  </p>
-  <p>
-    Areas farther from metropolitan centers tend to have fewer ELLs and this can lead to
-    isolation. It also means that these districts very rarely qualify for bilingual or dual
-    language programs which need 20 or more English language learners who speak the same
-    language at home to be implemented. Research shows these programs have higher educational
-    success than standard "English as a New Language" classes.
-  </p>
 
   <h2 class="map-subheadline">Compare School Districts</h2>
 
@@ -367,6 +370,60 @@
     {/if}
   </div>
 
+  <div class="article-body">
+    <p>A young girl in upstate New York is waiting to see if she's allowed to take the one class that would allow her to graduate from high school on time. Her first language is Spanish, and her school district says her vocabulary isn't strong enough yet to enroll in Biology.</p>
+
+    <p>Students in small towns and rural areas, like the girl, often migrate to the U.S. without their parents to work on farms and send money back home to their families. Some choose to attend schools, but it's not an easy transition. In some ways, even with her Biology struggles, the girl is lucky – she's learning English quickly, and she has adults advocating for her.</p>
+
+    <p>"Her parents are here working, but her parents are afraid to make waves," said Mary Jo Dudley, former director of the Corell Farmerworkers program. "She reached out to me and so I've been trying to get a meeting with her guidance counselor for a month."</p>
+
+    <p>While Dudley hasn't yet had success in getting her in the Biology class she needs, she has a lot of experience speaking up for migrants who are nervous about ruffling feathers in their new community.</p>
+
+    <p>In the rural villages where Dudley primarily works, getting a high school diploma is especially challenging for English Language Learners. ELL students in New York cities and suburbs have a 50.6% graduation rate, but only 28.9% of students in rural areas or towns graduate in the standard four years. While there's no singular explanation for these statistics, one of the most obvious factors is that there are simply fewer kids who need help learning new languages in rural schools than in urban or suburban ones.</p>
+
+    <iframe
+      title="Cities have more experience educating ELLs"
+      aria-label="Column Chart"
+      id="datawrapper-chart-9o3vR"
+      src="https://datawrapper.dwcdn.net/9o3vR/1/"
+      scrolling="no"
+      frameborder="0"
+      style="width: 0; min-width: 100% !important; border: none;"
+      height="437"
+      data-external="1"
+    ></iframe>
+
+    <p>"When we need to think out of the box as to how to help that kid graduate, sometimes the decision makers in schools, they're not comfortable doing that.," said Beth Clark-Gareca, CCPA Department of Teaching, Learning and Educational Leadership at Binghamton University. "They've never had to do that before. They're afraid that they're going to break some sort of a rule."</p>
+
+    <p>Schools with 20 students in the same grade who speak the same language at home are required to implement a bilingual education or dual language program, which often have better results educating students. Rural schools rarely meet this threshold, but they can still implement these programs if they choose.</p>
+
+    <p>At suburban schools about 30% of students are in dual or bilingual programs, while only about 12% are at rural schools. The rest of the students still get a specialized education, but the English as a New Language courses don't place an emphasis on the student's native language and don't require the teacher to speak it.</p>
+
+    <p>The students who migrate to small towns in upstate New York often have a different background than their counterparts in cities and could be in greater need of a bilingual program.</p>
+
+    <p>"They're coming from communities where public education only goes to 6th grade," said Dudley. "And so in order to pursue education beyond 6th grade, if you're from those rural communities, your family has to have enough money to send you to a city and pay room and board."</p>
+
+    <p>While the majority of English Language Learners speak Spanish at home, there is huge linguistic diversity across the state. Recent global conflicts have led to an influx of students from Ukraine and Myanmar, and six schools in New York have Latin American students who speak a Mayan language. Five of them are in rural areas. So even if a school has a bilingual program for Spanish students, it wouldn't be helpful for these immigrants.</p>
+
+    <p>There are teaching methods designed for these sorts of situations.</p>
+
+    <p>"Your classroom should be print-rich, and there should be visuals," said Myra Mora, retired school principal and bilingual teacher in upstate schools. "Any practice for English Language Learners is good practice."</p>
+
+    <p>Mora says simple signs labeling items in the classroom also make a big difference.</p>
+
+    <p>But rural schools outperform other schools only in one key category: dropout rates.</p>
+
+    <p>Even these numbers, however, can distort and minimize the problem. While it may seem like a school with a poor graduation rate would also have a poor dropout rate, that isn't always the case. Students who don't graduate in four years won't be included in the drop out rate, and neither will students who transfer to other schools. In some cases, schools have been accused of using these loop holes to artificially lower their drop out rate.</p>
+
+    <p>The young woman Dudley is working with, for example, won't have to drop out if she isn't allowed to take Biology. She can stay in school until she's reached a level of proficiency in English to take the course or until the end of the school year when she turns 21. But many students like her get discouraged or aren't able to spare the time.</p>
+
+    <p>"If she can't graduate from high school, then she's kind of saying to herself, 'What am I doing here? Because I could go clean houses or hotels and make money,'" said Dudley.</p>
+
+    <p>It's also not always a welcoming environment for these immigrants, according to Dudley and Mora. In school where there are very few students learning to speak English, Mora says she's often seen students be misunderstood, and she says making sure every student's potential is seen would be the most transformative change for schools in the state.</p>
+
+    <p>"They're not an empty vessel. We think that 'Oh, my God, they know nothing.' And so that's the sad part," said Mora. "Could we start with what they actually can do as opposed to what they can't?"</p>
+  </div>
+
   <div class="method-section">
     <h3 class="method-heading">Methodological Notes</h3>
     <dl class="method-list">
@@ -412,7 +469,7 @@
 
       <div class="method-item">
         <dt>Data sources</dt>
-        <dd>NYS Education Department 2023-24 ELL files; NCES CCD LEA Directory 2024-25; NCES EDGE Geocode LEA 2023-24.</dd>
+        <dd>NYS Education Department 2023-24 ELL files; NCES CCD LEA Directory 2024-25; NCES EDGE Geocode LEA 2023-24. NYSED data files provided information on home languages, enrollment and graduation rates for ELL students in specific school districts. NCES EDGE provides the classifications of rural, town, suburban and urban and the NCES was simply used to provide unique IDs that allowed the classifications to be linked to the schools on the NYSED data.</dd>
       </div>
 
     </dl>
@@ -420,6 +477,24 @@
 </div>
 
 <style>
+  .article-body {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .article-body p {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 20px;
+  }
+
+  .article-body iframe {
+    margin: 28px 0;
+  }
+
   .map-subheadline {
     font-family: sans-serif;
     font-size: 22px;
