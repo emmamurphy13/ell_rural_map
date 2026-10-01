@@ -39,11 +39,6 @@
 
   <div class="nav-bar">
     <nav class="nav-bar-inner" aria-label="Main navigation">
-      <a href="{base}/" class="nav-link">Home</a>
-      <a href="{base}/map" class="nav-link">Map</a>
-      <a href="{base}/data" class="nav-link">Data</a>
-      <a href="{base}/about" class="nav-link">About</a>
-
       <button class="search-btn" aria-label="Search">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="7" />
@@ -146,27 +141,8 @@
     padding: 0 32px;
     display: flex;
     align-items: stretch;
-    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 0;
-  }
-
-  .nav-link {
-    color: #0d2b1a;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 14px 14px;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: background 0.15s, border-color 0.15s;
-  }
-
-  .nav-link:hover {
-    background: rgba(0, 0, 0, 0.08);
-    border-bottom-color: #0d2b1a;
   }
 
   .search-btn {

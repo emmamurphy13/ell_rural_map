@@ -9,19 +9,9 @@ describe('SiteHeader', () => {
     expect(screen.getByLabelText('ELL Rural Map home')).toBeTruthy();
   });
 
-  it('renders default navigation links', () => {
+  it('renders the search button', () => {
     render(SiteHeader);
-    expect(screen.getByText('Home')).toBeTruthy();
-  });
-
-  it('renders the Map link', () => {
-    render(SiteHeader);
-    expect(screen.getByText('Map')).toBeTruthy();
-  });
-
-  it('renders the Data link', () => {
-    render(SiteHeader);
-    expect(screen.getByText('Data')).toBeTruthy();
+    expect(screen.getByLabelText('Search')).toBeTruthy();
   });
 });
 
