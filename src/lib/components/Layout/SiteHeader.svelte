@@ -7,24 +7,29 @@
   onMount(() => {
     const sentinel = document.getElementById('scroll-sentinel');
     if (!sentinel) return;
+
     const observer = new IntersectionObserver(
-      ([entry]) => { scrolled = !entry.isIntersecting; },
+      ([entry]) => {
+        scrolled = !entry.isIntersecting;
+      },
       { threshold: 0 }
     );
+
     observer.observe(sentinel);
     return () => observer.disconnect();
   });
 </script>
 
 <header class="site-header" class:scrolled>
-  <!-- Top white bar: hidden when scrolled -->
   <div class="top-bar">
     <div class="top-bar-inner">
-      <div class="top-bar-side top-bar-left"></div>
+      <div class="top-bar-side top-bar-left">
+        <a href="{base}/" class="site-title-link" aria-label="ELL Rural Map home">
+          ELL Rural Map
+        </a>
+      </div>
 
-      <a href="https://www.chalkbeat.org/" class="logo-link" aria-label="Chalkbeat">
-        <img src="{base}/chalkbeatlogo.png" alt="Chalkbeat" class="logo" />
-      </a>
+      <div class="top-bar-spacer"></div>
 
       <div class="top-bar-side top-bar-right">
         <a href="{base}/about" class="newsletters-btn">About</a>
@@ -32,32 +37,19 @@
     </div>
   </div>
 
-  <!-- Nav bar: gains branding when scrolled -->
   <div class="nav-bar">
     <nav class="nav-bar-inner" aria-label="Main navigation">
-
-      <!-- Scrolled branding badges (only visible when scrolled) -->
-      <div class="scroll-brand">
-        <a href="https://www.chalkbeat.org/" class="brand-chalkbeat">Chalkbeat</a>
-        <a href="https://www.chalkbeat.org/newyork/" class="brand-newyork">New York</a>
-      </div>
-
       <a href="{base}/" class="nav-link">Home</a>
-
       <a href="{base}/map" class="nav-link">Map</a>
-
       <a href="{base}/data" class="nav-link">Data</a>
-
       <a href="{base}/about" class="nav-link">About</a>
 
-      <!-- Search icon (always visible in nav, more prominent when scrolled) -->
       <button class="search-btn" aria-label="Search">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+          <circle cx="11" cy="11" r="7" />
+          <line x1="16.5" y1="16.5" x2="22" y2="22" />
         </svg>
       </button>
-
     </nav>
   </div>
 </header>
@@ -67,10 +59,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
-  /* ── Top white bar ── */
   .top-bar {
     background: #ffffff;
     border-bottom: 1px solid #e5e5e5;
@@ -107,16 +98,23 @@
     justify-content: flex-end;
   }
 
-  .logo-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .top-bar-spacer {
+    min-height: 1px;
   }
 
-  .logo {
-    height: 100px;
-    width: auto;
-    display: block;
+  .site-title-link {
+    color: #0d2b1a;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 0;
+  }
+
+  .site-title-link:hover {
+    opacity: 0.85;
   }
 
   .newsletters-btn {
@@ -130,16 +128,14 @@
     border-radius: 0;
     transition: opacity 0.15s;
     display: inline-block;
-  }
-
-  .newsletters-btn {
     background: #aecad8;
     color: #0d2b1a;
   }
 
-  .newsletters-btn:hover { opacity: 0.85; }
+  .newsletters-btn:hover {
+    opacity: 0.85;
+  }
 
-  /* ── Nav bar ── */
   .nav-bar {
     background: #aecad8;
   }
@@ -154,49 +150,6 @@
     gap: 0;
   }
 
-  /* ── Scrolled branding ── */
-  .scroll-brand {
-    display: none;
-    align-items: stretch;
-    margin-right: 8px;
-  }
-
-  .scrolled .scroll-brand {
-    display: flex;
-  }
-
-  .brand-chalkbeat {
-    background: #3666ec;
-    color: #ffffff;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-  }
-
-  .brand-newyork {
-    background: #2e8070;
-    color: #ffffff;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-  }
-
-  .brand-chalkbeat:hover { opacity: 0.9; }
-  .brand-newyork:hover { opacity: 0.9; }
-
-  /* ── Nav links ── */
   .nav-link {
     color: #0d2b1a;
     text-decoration: none;
@@ -212,11 +165,10 @@
   }
 
   .nav-link:hover {
-    background: rgba(0,0,0,0.08);
+    background: rgba(0, 0, 0, 0.08);
     border-bottom-color: #0d2b1a;
   }
 
-  /* ── Search button ── */
   .search-btn {
     background: none;
     border: none;
@@ -240,4 +192,25 @@
     opacity: 0.7;
   }
 
+  @media (max-width: 640px) {
+    .top-bar-inner {
+      padding: 16px 20px;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .top-bar-side {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .top-bar-right {
+      justify-content: center;
+    }
+
+    .nav-bar-inner {
+      padding: 0 20px;
+    }
+  }
 </style>

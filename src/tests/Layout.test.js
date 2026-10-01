@@ -4,9 +4,9 @@ import SiteHeader from '$lib/components/Layout/SiteHeader.svelte';
 import SiteFooter from '$lib/components/Layout/SiteFooter.svelte';
 
 describe('SiteHeader', () => {
-  it('renders the logo', () => {
+  it('renders the site title', () => {
     render(SiteHeader);
-    expect(screen.getByLabelText('Chalkbeat')).toBeTruthy();
+    expect(screen.getByLabelText('ELL Rural Map home')).toBeTruthy();
   });
 
   it('renders default navigation links', () => {
@@ -26,13 +26,13 @@ describe('SiteHeader', () => {
 });
 
 describe('SiteFooter', () => {
-  it('renders the Chalkbeat logo', () => {
+  it('renders the site title', () => {
     render(SiteFooter);
-    expect(screen.getByAltText('Chalkbeat')).toBeTruthy();
+    expect(screen.getByText('ELL Rural Map')).toBeTruthy();
   });
 
   it('renders footer navigation links', () => {
     render(SiteFooter);
-    expect(screen.getByText('About Us')).toBeTruthy();
+    expect(screen.getByText('About')).toBeTruthy();
   });
 });
