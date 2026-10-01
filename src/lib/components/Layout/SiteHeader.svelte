@@ -30,10 +30,6 @@
       </div>
 
       <div class="top-bar-spacer"></div>
-
-      <div class="top-bar-side top-bar-right">
-        <a href="{base}/about" class="newsletters-btn">About</a>
-      </div>
     </div>
   </div>
 
@@ -89,10 +85,6 @@
     justify-content: flex-start;
   }
 
-  .top-bar-right {
-    justify-content: flex-end;
-  }
-
   .top-bar-spacer {
     min-height: 1px;
   }
@@ -109,25 +101,6 @@
   }
 
   .site-title-link:hover {
-    opacity: 0.85;
-  }
-
-  .newsletters-btn {
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 11px 22px;
-    border-radius: 0;
-    transition: opacity 0.15s;
-    display: inline-block;
-    background: #aecad8;
-    color: #0d2b1a;
-  }
-
-  .newsletters-btn:hover {
     opacity: 0.85;
   }
 
@@ -178,10 +151,6 @@
 
     .top-bar-side {
       width: 100%;
-      justify-content: center;
-    }
-
-    .top-bar-right {
       justify-content: center;
     }
 
